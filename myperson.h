@@ -20,3 +20,5 @@ PNode* createPNode(Person& person);
 PNode* insertNode(PNode* curNode, Person& person);
 void destroyNode(PNode* forDestroy, PNode* head);
 void printNodeFrom(PNode* from);
+int countNode(PNode* head);
+PNode* hasNode(PNode* head, char* name);

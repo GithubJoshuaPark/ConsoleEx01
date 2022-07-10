@@ -1,8 +1,15 @@
 #include "myheader.h"
 #include <stdio.h>
 
-void drawline() {
-	printf("================\n");
+
+void drawline(char *str) {
+	if (str == NULL) {
+		printf("=================\n");
+	}
+	else {
+		printf("======[%s]=======\n", str);
+	}
+	
 }
 
 int add(int a, int b) {

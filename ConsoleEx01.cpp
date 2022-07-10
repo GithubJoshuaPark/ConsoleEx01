@@ -14,7 +14,7 @@ using namespace std;
 int main()
 {
     cout << "Hello World!\n";
-    drawline();
+    drawline(NULL);
     cout << "myhead.add(5,5)" << add(5, 5) << endl;
 
     FILE* fp;
@@ -33,8 +33,8 @@ int main()
    
     fclose(fp);
 
-    drawline();
-    drawline();
+    drawline(NULL);
+    drawline(NULL);
     //drawline();
     //showPerson(&p1);
 
@@ -87,11 +87,34 @@ int main()
     strcpy_s(p4.name, sizeof(GN), GN);
     PNode* pNodeNext3 = insertNode(pNodeNext2, p4);
 
+    char title[] = "Person Count";
+    drawline(title);
+    cout << "The number of Person node is: " << countNode(pNodeHead) << endl;
+
+    cout << "Which name do you search for in PNode?" << endl;
+    char ls_name[20];
+    cin >> ls_name;
+    PNode* searchForNode = hasNode(pNodeHead, ls_name);
+    if (searchForNode != NULL) {
+        cout << "Your search name is [" 
+             << searchForNode->person.no 
+             << "] "
+             << searchForNode->person.name
+             << " and age: "
+             << searchForNode->person.age
+             << endl;
+    }
+    else {
+        cout << "Your search name is not in PNode" << endl;
+    }
+    
     printNodeFrom(pNodeHead);
     
     destroyNode(pNodeNext3, pNodeHead);
     destroyNode(pNodeNext2, pNodeHead);
     destroyNode(pNodeHead, pNodeHead);
+
+    drawline(NULL);
 
     return 0;
 }
