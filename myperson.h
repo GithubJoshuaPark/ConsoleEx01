@@ -14,6 +14,7 @@ void showPerson(Person& p);
 struct PNode {
     Person person;
     PNode* nextPNode;
+    PNode* prevPNode;
 };
 
 PNode* createPNode(Person& person);

@@ -116,6 +116,16 @@ int main()
 
     drawline(NULL);
 
+    char ls_imsi[][10] = {"Jinwoo", "miso", "Sarang"};
+    cout << "sizeof li_imsi: " << sizeof(ls_imsi) << endl;
+    cout << "sizeof *li_imsi: " << sizeof(*ls_imsi) << endl;
+    cout << "sizeof(li_imsi)/10: " << sizeof(ls_imsi)/10 << endl;
+
+    for (int i = 0; i < sizeof(ls_imsi) / 10; i++) {
+        char* li_str = ls_imsi[i];
+        cout << li_str <<" [" <<strlen(li_str)<<"]" << endl;;
+    }
+
     return 0;
 }
 

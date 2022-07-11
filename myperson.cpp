@@ -20,12 +20,14 @@ PNode* createPNode(Person& person) {
     PNode* pNode = (PNode*)malloc(sizeof(PNode));
     pNode->person= person;
     pNode->nextPNode = NULL;
+    pNode->prevPNode = NULL;
     return pNode;
 }
 
 PNode* insertNode(PNode* curNode, Person& person) {
     PNode* pNode = (PNode*)malloc(sizeof(PNode));
     pNode->nextPNode = curNode->nextPNode;
+    pNode->prevPNode = curNode;
     pNode->person = person;
     curNode->nextPNode = pNode;
     return pNode;
