@@ -1,15 +1,19 @@
 // ConsoleEx01.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+//#define _CRT_NONSTDC_NO_DEPRECATE
+//#define _CRT_SECURE_NO_WARNINGS
+//#define _CRT_SECURE_NO_DEPRECATE  
 
 #include <iostream>
 #include <stdio.h>
-#include <stdlib.h>  // malloc
+#include <stdlib.h>  // malloc, itoa
 #include <string.h>
 #include <memory.h>
 #include "myperson.h"
 
 using namespace std;
 
+extern int gi_num;
 
 int main()
 {
@@ -117,14 +121,31 @@ int main()
     drawline(NULL);
 
     char ls_imsi[][10] = {"Jinwoo", "miso", "Sarang"};
-    cout << "sizeof li_imsi: " << sizeof(ls_imsi) << endl;
-    cout << "sizeof *li_imsi: " << sizeof(*ls_imsi) << endl;
-    cout << "sizeof(li_imsi)/10: " << sizeof(ls_imsi)/10 << endl;
+    cout << "sizeof li_imsi: " << sizeof(ls_imsi)/sizeof(char) << endl;  // 30
+    cout << "sizeof *li_imsi: " << sizeof(*ls_imsi) << endl;  // 10
+    cout << "sizeof(li_imsi)/10: " << sizeof(ls_imsi)/10 << endl;  // 3
 
     for (int i = 0; i < sizeof(ls_imsi) / 10; i++) {
         char* li_str = ls_imsi[i];
         cout << li_str <<" [" <<strlen(li_str)<<"]" << endl;;
     }
+
+    char strtokEx[20] = "I Love You.";
+    char* result;
+    char* remain = NULL;
+
+    result = strtok_s(strtokEx, " ", &remain);
+    while (result != NULL) {
+        cout << "tokened str: " << result << endl;
+        cout << "remained str: " << remain << endl;
+        result = strtok_s(NULL, " ", &remain);
+    }
+
+    drawline(NULL);
+    char itoa_c[20] = {0};
+    //itoa(gi_num, itoa_c, 10);
+    snprintf(itoa_c, 10, "%d", gi_num);
+    cout << "gi_num: " << itoa_c << endl;
 
     return 0;
 }

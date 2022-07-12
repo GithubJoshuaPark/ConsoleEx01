@@ -2,6 +2,8 @@
 #include <stdio.h>
 
 
+int gi_num = 10;
+
 void drawline(char *str) {
 	if (str == NULL) {
 		printf("=================\n");
